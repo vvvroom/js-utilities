@@ -1,7 +1,7 @@
 {
-  "name": "js-utilities",
-  "version": "1.0.0",
-  "description": "JS Helpers",
+  "name": "vvv-js-utilities",
+  "version": "0.1.0",
+  "description": "VroomVroomVroom JS Helpers",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,10 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/vvvroom/js-utilities.git"
   },
-  "author": "",
+  "author": "Marc <marc@vroomvroomvroom.com.au>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vvvroom/js-utilities/issues"
   },
-  "homepage": "https://github.com/vvvroom/js-utilities#readme"
+  "homepage": "https://github.com/vvvroom/js-utilities#readme",
+  "private": true
 }

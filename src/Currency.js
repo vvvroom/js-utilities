@@ -1,3 +1,5 @@
+import Axios from 'axios';
+
 export default class Currency {
 
     /**
@@ -112,5 +114,57 @@ export default class Currency {
             case 'ZAR': return 'R'; break;
             case 'ZWL': return 'Z$'; break;
         }
+    }
+
+    /**
+     *  Convert price
+     *
+     *  @param {number} originalPrice
+     *  @param {number} originalRate
+     *  @param {number} targetRate
+     *  @return {number}
+     */
+    static convertPrice(originalPrice, originalRate, targetRate) {
+        let convertedPrice = (originalPrice / originalRate) * targetRate;
+
+        return parseFloat(convertedPrice.toFixed(2));
+    }
+
+    /**
+     * Build price text to show price converter
+     *
+     * @param {number} originalPrice
+     * @param {string} originalCurrency ISO-4217
+     * @param {string} targetCurrency ISO-4217
+     * @param {number} originalRate
+     * @param {number} targetRate
+     * @return {string} e.g: "£100 (AUD $120)"
+     */
+    static buildPriceText(originalPrice, originalCurrency, targetCurrency, originalRate, targetRate) {
+        // if currency the same, simply return with original currency
+        if (originalCurrency === targetCurrency) {
+            return this.currencyToSign(originalCurrency) + originalPrice;
+        }
+
+        return this.currencyToSign(targetCurrency) + this.convertPrice(originalPrice, originalRate, targetRate) +
+            '  <span class="original-price">(' + originalCurrency + ' ' + this.currencyToSign(originalCurrency) + originalPrice + ')<span>';
+    }
+
+    /**
+     * Get exchange rate
+     *
+     * @param {string} originalCurrency
+     * @param {string} targetCurrency
+     * @return {Promise}
+     */
+    static getExchangeRate(originalCurrency, targetCurrency) {
+        return Axios.post(
+            'https://booking.vroomvroomvroom.com/currency/get-conversion-rate',
+            {
+                'fromCurrency': originalCurrency,
+                'toCurrency': targetCurrency
+            },
+            { json: true }
+        );
     }
 }

@@ -157,14 +157,13 @@ export default class Currency {
      * @param {string} targetCurrency
      * @return {Promise}
      */
-    static getExchangeRate(originalCurrency, targetCurrency) {
+    getExchangeRate(originalCurrency, targetCurrency) {
         return Axios.post(
             'https://booking.vroomvroomvroom.com/currency/get-conversion-rate',
             {
                 'fromCurrency': originalCurrency,
                 'toCurrency': targetCurrency
-            },
-            { json: true }
+            }
         );
     }
 }

@@ -143,11 +143,11 @@ export default class Currency {
     static buildPriceText(originalPrice, originalCurrency, targetCurrency, originalRate, targetRate) {
         // if currency the same, simply return with original currency
         if (originalCurrency === targetCurrency) {
-            return this.currencyToSign(originalCurrency) + originalPrice;
+            return this.currencyToSign(originalCurrency) + originalPrice.toFixed(2);
         }
 
         return this.currencyToSign(targetCurrency) + this.convertPrice(originalPrice, originalRate, targetRate) +
-            '  <span class="original-price">(' + originalCurrency + ' ' + this.currencyToSign(originalCurrency) + originalPrice + ')<span>';
+            '  <span class="original-price">(' + originalCurrency + ' ' + this.currencyToSign(originalCurrency) + originalPrice.toFixed(2) + ')<span>';
     }
 
     /**

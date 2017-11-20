@@ -158,7 +158,7 @@ export default class Currency {
      * @param {string} targetCurrency
      * @return {Promise}
      */
-    getExchangeRate(endpoint, originalCurrency, targetCurrency) {
+    static getExchangeRate(endpoint, originalCurrency, targetCurrency) {
         return Axios.post(
             endpoint,
             {

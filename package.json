@@ -1,11 +1,11 @@
 {
-  "name": "vvv-js-utilities",
-  "version": "0.0.2",
+  "name": "@vvvroom/js-utilities",
+  "version": "1.0.3",
   "description": "VroomVroomVroom JS Helpers",
   "main": "index.js",
   "scripts": {
     "compile": "babel src -d lib",
-    "prepublish": "npm run compile"
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",

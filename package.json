@@ -1,6 +1,6 @@
 {
   "name": "@vvvroom/js-utilities",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "VroomVroomVroom JS Helpers",
   "main": "index.js",
   "scripts": {

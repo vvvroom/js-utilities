@@ -1,12 +1,38 @@
 import Axios from 'axios';
 
-export default class Currency {
+class Currency {
+
+    /**
+     * Format the number
+     *
+     * @param {number} number
+     * @param {string} currencyCode
+     * @param {number} precision
+     * @return {string} formatted number
+     */
+    static format(number, currencyCode, precision = 2) {
+        return Intl
+            .NumberFormat(
+                undefined,
+                {
+                    style: 'currency',
+                    currency: currencyCode,
+                    currencyDisplay: 'symbol',
+                    useGrouping: true,
+                    minimumFractionDigits: precision,
+                    maximumFractionDigits: precision
+                }
+            )
+            .format(number);
+    }
 
     /**
      * Convert a currency code to its currency symbol 
      * 
      * @param  {string} currencyCode
      * @return {string} - the currency symbol
+     * @deprecated since 1.1.0
+     * @see Currency.format
      */
     static currencyToSign(currencyCode) {
         switch(currencyCode) {
@@ -140,16 +166,18 @@ export default class Currency {
      * @param {string} targetCurrency ISO-4217
      * @param {number} originalRate
      * @param {number} targetRate
-     * @return {string} e.g: "£100 (AUD $120)"
+     * @return {string} e.g: "£100 (A$120)"
      */
     static buildPriceText(originalPrice, originalCurrency, targetCurrency, originalRate, targetRate) {
         // if currency the same, simply return with original currency
         if (originalCurrency === targetCurrency) {
-            return this.currencyToSign(originalCurrency) + originalPrice.toFixed(2);
+            return Currency.format(originalPrice, originalCurrency);
         }
 
-        return this.currencyToSign(targetCurrency) + this.convertPrice(originalPrice, originalRate, targetRate) +
-            '  <span class="original-price">(' + originalCurrency + ' ' + this.currencyToSign(originalCurrency) + originalPrice.toFixed(2) + ')<span>';
+        const foreignPriceString = Currency.format(this.convertPrice(originalPrice, originalRate, targetRate), targetCurrency);
+        const originalPriceString = Currency.format(originalPrice, originalCurrency);
+
+        return `${foreignPriceString} <span class="original-price">(${originalPriceString})</span>`;
     }
 
     /**
@@ -170,3 +198,5 @@ export default class Currency {
         );
     }
 }
+
+export default Currency;

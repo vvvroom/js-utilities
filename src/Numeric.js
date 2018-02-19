@@ -1,4 +1,7 @@
-class Number {
+/**
+ * Use Numeric as name because Number is reserved name
+ */
+class Numeric {
 
     /**
      * Format the number
@@ -22,4 +25,4 @@ class Number {
     }
 }
 
-export default Number;
+export default Numeric;

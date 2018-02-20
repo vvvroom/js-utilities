@@ -17,7 +17,7 @@ class Currency {
                 {
                     style: 'currency',
                     currency: currencyCode,
-                    currencyDisplay: 'symbol',
+                    currencyDisplay: 'code',
                     useGrouping: true,
                     minimumFractionDigits: precision,
                     maximumFractionDigits: precision

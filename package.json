@@ -20,7 +20,8 @@
   "private": false,
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.6.1"
+    "babel-preset-env": "^1.6.1",
+    "intl": "^1.2.5"
   },
   "dependencies": {
     "axios": "^0.17.0"

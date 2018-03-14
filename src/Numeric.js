@@ -1,3 +1,6 @@
+import Intl from 'intl';
+import 'intl/locale-data/jsonp/en.js';
+
 /**
  * Use Numeric as name because Number is reserved name
  */

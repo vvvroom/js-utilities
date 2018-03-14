@@ -1,4 +1,6 @@
 import Axios from 'axios';
+import Intl from 'intl';
+import 'intl/locale-data/jsonp/en.js';
 
 class Currency {
 

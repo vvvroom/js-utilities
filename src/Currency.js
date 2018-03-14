@@ -1,16 +1,6 @@
 import Axios from 'axios';
-
-if (!global.Intl) {
-    // line below allows for code splitting
-    require.ensure([
-        'intl',
-        'intl/locale-data/jsonp/en.js'
-    ], function (require) {
-        // requires like this will just initialize them, and the modules set the globals
-        require('intl');
-        require('intl/locale-data/jsonp/en.js');
-    });
-}
+import Intl from 'intl';
+import 'intl/locale-data/jsonp/en.js';
 
 class Currency {
 

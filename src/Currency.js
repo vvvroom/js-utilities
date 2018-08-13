@@ -1,5 +1,7 @@
 import Axios from 'axios';
+import currencySymbol from 'currency-symbol-map';
 import Intl from 'intl';
+import Numeric from './Numeric';
 import 'intl/locale-data/jsonp/en.js';
 
 class Currency {
@@ -11,6 +13,7 @@ class Currency {
      * @param {string} currencyCode
      * @param {number} precision
      * @return {string} formatted number
+     * @deprecated use shortFormat() or longFormat()
      */
     static format(number, currencyCode, precision = 2) {
         return Intl
@@ -26,6 +29,46 @@ class Currency {
                 }
             )
             .format(number);
+    }
+
+    /**
+     * Currency in short format, mostly used for price breakdown
+     *
+     * @param {number} number
+     * @param {string} currencyCode
+     * @return {string} formatted currency. e.g. "$1,099.99"
+     * @throws When parameter "currencyCode" invalid
+     */
+    static shortFormat(number, currencyCode) {
+        const currencySymbol = currencySymbol(currencyCode);
+
+        if (currencySymbol === undefined) {
+            throw new `Invalid currency code ${currencyCode}`;
+        }
+
+        const numberFormatted = Numeric.format(number);
+
+        return currencySymbol + numberFormatted;
+    }
+
+    /**
+     * Currency in short format, mostly used for price breakdown
+     *
+     * @param {number} number
+     * @param {string} currencyCode
+     * @return {string} formatted currency. e.g. "(AUD) $1,099.99"
+     * @throws When currencyCode invalid
+     */
+    static longFormat(number, currencyCode) {
+        const currencySymbol = currencySymbol(currencyCode);
+
+        if (currencySymbol === undefined) {
+            throw new `Invalid currency code ${currencyCode}`;
+        }
+
+        const numberFormatted = Numeric.format(number);
+
+        return `(${currencyCode.toUpperCase()}) ${currencySymbol}${numberFormatted}`;
     }
 
     /**

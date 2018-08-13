@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import currencySymbol from 'currency-symbol-map';
+import getSymbolFromCurrency from 'currency-symbol-map';
 import Intl from 'intl';
 import Numeric from './Numeric';
 import 'intl/locale-data/jsonp/en.js';
@@ -40,7 +40,7 @@ class Currency {
      * @throws When parameter "currencyCode" invalid
      */
     static shortFormat(number, currencyCode) {
-        const currencySymbol = currencySymbol(currencyCode);
+        const currencySymbol = getSymbolFromCurrency(currencyCode);
 
         if (currencySymbol === undefined) {
             throw new `Invalid currency code ${currencyCode}`;
@@ -60,7 +60,7 @@ class Currency {
      * @throws When currencyCode invalid
      */
     static longFormat(number, currencyCode) {
-        const currencySymbol = currencySymbol(currencyCode);
+        const currencySymbol = getSymbolFromCurrency(currencyCode);
 
         if (currencySymbol === undefined) {
             throw new `Invalid currency code ${currencyCode}`;
@@ -72,11 +72,11 @@ class Currency {
     }
 
     /**
-     * Convert a currency code to its currency symbol 
-     * 
+     * Convert a currency code to its currency symbol
+     *
      * @param  {string} currencyCode
      * @return {string} - the currency symbol
-     * @deprecated since 1.1.0
+     * @deprecated since 1.1.0 and will removed at 1.3.0
      * @see Currency.format
      */
     static currencyToSign(currencyCode) {

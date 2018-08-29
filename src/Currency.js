@@ -56,7 +56,7 @@ class Currency {
      *
      * @param {number} number
      * @param {string} currencyCode
-     * @return {string} formatted currency. e.g. "(AUD) $1,099.99"
+     * @return {string} formatted currency. e.g. "AUD $1,099.99"
      * @throws When currencyCode invalid
      */
     static longFormat(number, currencyCode) {
@@ -68,7 +68,7 @@ class Currency {
 
         const numberFormatted = Numeric.format(number);
 
-        return `(${currencyCode.toUpperCase()}) ${currencySymbol}${numberFormatted}`;
+        return `${currencyCode.toUpperCase()} ${currencySymbol}${numberFormatted}`;
     }
 
     /**

@@ -18,12 +18,10 @@
   },
   "homepage": "https://github.com/vvvroom/js-utilities#readme",
   "private": false,
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
-  },
   "dependencies": {
     "axios": "^0.18.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "currency-symbol-map": "^4.0.4",
     "intl": "^1.2.5"
   }

@@ -3,6 +3,10 @@
   "version": "1.2.3",
   "description": "VroomVroomVroom JS Helpers",
   "main": "index.js",
+  "scripts": {	
+    "build": "babel src -d lib",	
+    "prepare": "npm run build"	
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vvvroom/js-utilities.git"

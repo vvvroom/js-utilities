@@ -19,7 +19,7 @@
   "homepage": "https://github.com/vvvroom/js-utilities#readme",
   "private": false,
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "currency-symbol-map": "^4.0.4",
     "intl": "^1.2.5"
   },

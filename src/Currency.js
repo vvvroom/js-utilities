@@ -113,7 +113,8 @@ class Currency {
             case 'ETB': return 'ETB';
             case 'EUR': return '€';
             case 'FJD': return 'FJ$';
-            case 'GBP': return '£';
+            case 'GBP':
+            case 'GIP': return '£';
             case 'GEL': return 'Lari';
             case 'GTQ': return 'Q';
             case 'HKD': return 'HK$';
@@ -186,6 +187,7 @@ class Currency {
             case 'YER': return 'ر.ي.‏';
             case 'ZAR': return 'R';
             case 'ZWL': return 'Z$';
+            default: return '';
         }
     }
 

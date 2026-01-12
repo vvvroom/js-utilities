@@ -187,6 +187,7 @@ class Currency {
             case 'YER': return 'ر.ي.‏';
             case 'ZAR': return 'R';
             case 'ZWL': return 'Z$';
+            default: return '';
         }
     }
 
